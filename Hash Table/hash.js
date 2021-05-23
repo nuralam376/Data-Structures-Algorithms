@@ -32,6 +32,18 @@ class Hash {
     }
     return undefined;
   }
+
+  keys() {
+    for (let i = 0; i < this.data.length; i++) {
+      if (this.data[i]) console.log(this.data[i][0][0]);
+    }
+  }
+
+  values() {
+    for (let i = 0; i < this.data.length; i++) {
+      if (this.data[i]) console.log(this.data[i][0][1]);
+    }
+  }
 }
 
 const hash = new Hash(5);
@@ -39,3 +51,5 @@ hash.set("grapes", 1000);
 hash.set("apple", 2000);
 hash.get("grapes");
 hash.get("apple");
+hash.keys();
+hash.values();
