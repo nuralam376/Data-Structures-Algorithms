@@ -1,4 +1,4 @@
-// 1 ---> 10 ---> 5 ----> 16
+// 1 ---> 10 ---> 99 ---> 5 ----> 16
 
 class Node {
   constructor(value) {
@@ -43,7 +43,40 @@ class LinkedList {
   }
 
   insert(index, value) {
+    if (index >= this.length) {
+      this.append(value);
+      return;
+    }
     const newNode = new Node(value);
+    let leader = this.traverseList(index - 1);
+    let holdingPointer = leader.next;
+    leader.next = newNode;
+    newNode.next = holdingPointer;
+    this.length++;
+    return this;
+  }
+
+  remove(index) {
+    if (index >= this.length || index < 0) {
+      return;
+    }
+    let leader = this.traverseList(index - 1);
+    let unwantedNode = leader.next;
+    leader.next = unwantedNode.next;
+    this.length--;
+    return this;
+  }
+
+  traverseList(index) {
+    let counter = 0;
+    let currentNode = this.head;
+
+    while (counter !== index) {
+      currentNode = currentNode.next;
+      counter++;
+    }
+
+    return currentNode;
   }
 }
 
@@ -51,4 +84,8 @@ const linkedList = new LinkedList(10);
 linkedList.append(5);
 linkedList.append(16);
 linkedList.prepend(1);
+linkedList.insert(2, 99);
+linkedList.insert(200, 9);
+linkedList.remove(2);
+linkedList.remove(4);
 console.log(linkedList.printList());
