@@ -83,15 +83,15 @@ class LinkedList {
     if (!this.head.next) {
       return;
     }
-    let first = this.head;
-    let second = this.head.next;
-    this.tail = this.head;
+    let first = this.head; // 1 -> 5 -> 10 -> 16
+    let second = this.head.next; // 5 -> 10 -> 16
+    this.tail = this.head; // 1->5->10->16
 
-    // 1 10 5 16
     while (second) {
-      const temp = second.next; // 5  16
-      second.next = first; // 10 -> 1
-      first = second; // 10
+      const temp = second.next; // 10->16
+      second.next = first; // 5->1->5->10->16
+      first = second; // 1->5->10->16
+      console.log(first);
       second = temp; // 5
     } // 10 -> 5 - 16 - 1
     this.head.next = null;
