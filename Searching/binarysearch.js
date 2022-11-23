@@ -30,3 +30,41 @@ const target = 30;
 const target2 = 50;
 console.log(binarySearch(array, target));
 console.log(binarySearch(array2, target2));
+
+// Binary Search - Flooring, Ceiling
+
+function floorCeil(array, target) {
+    let start = 0;
+    let end = array.length - 1;
+    let mid;
+    let order;
+
+    if(array[start] > array[end]) {
+        order = "desc";
+    } else {
+        order = "asc";
+    }
+
+    while(start <= end) {
+        mid = Math.floor((start + end) / 2); 
+        if(array[mid] === target) {
+            break;
+        } else if((order === "asc" && array[mid] < target) || (order === "desc" && array[mid] > target)) {
+            start = mid + 1;
+        } else {
+            end = mid - 1;
+        }
+    }
+    console.log(mid)
+    if (order === "asc") {
+        return `Floor - ${array[mid]} and Ceil ${array[mid + 1]}`
+    } else {
+        return `Floor - ${array[mid + 1]} and Ceil - ${array[mid]}}`
+    }
+}
+
+// 10,20,30,40,50,60,70,80];
+// [80, 70, 60, 50, 40, 30, 20, 10]
+
+console.log(floorCeil(array, 58));
+console.log(floorCeil(array2, 58));
