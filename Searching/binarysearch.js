@@ -68,3 +68,50 @@ function floorCeil(array, target) {
 
 console.log(floorCeil(array, 58));
 console.log(floorCeil(array2, 58));
+
+
+// Count numbers
+function findDuplicateNumbers(array, target) {
+    let start = 0;
+    let end = array.length - 1;
+    let mid, order, count = 0;
+
+    if(array[start] > array[end]) {
+        order = "desc";
+    } else {
+        order = "asc";
+    }
+
+    while(start <= end) {
+        mid = Math.floor((start + end) / 2);
+
+        if(array[mid] === target) {
+            break;
+        } else if((order === "asc" && array[mid] < target) || (order === "desc" && array[mid] > target)) {
+            start = mid + 1;
+        } else {
+            end = mid - 1;
+        }
+    }
+   
+    for(let i = mid; i >= 0; i--) {
+        if(array[i] === target) {
+            count++;
+        } else {
+            break;
+        }
+    }   
+
+    for(let i = mid + 1; i < array.length; i++) {
+        if(array[i] === target) {
+            count++;
+        } else {
+            break;
+        }
+    }
+    return count;
+}
+
+
+console.log(findDuplicateNumbers([2,3,5,8,8,8,8,9,12,12,12,15], 8));
+console.log(findDuplicateNumbers([25,19,17,15,12,12,8,8,8,6,5,4,4,3,2], 12));
