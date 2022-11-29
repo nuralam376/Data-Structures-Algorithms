@@ -17,3 +17,5 @@ const peakElement = (nums) => {
 };
 
 console.log(peakElement([1,2,3,10]));
+
+// Linear Search = arr[i] >= arr[i - 1] && arr[i] >= arr[i+1]
