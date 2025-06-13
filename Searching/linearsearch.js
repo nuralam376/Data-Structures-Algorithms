@@ -14,14 +14,14 @@ console.log(colors.includes("Blue"));
 const array = [10,20,30,40, 50, 60, 70, 80];
 
 function linearSearch(array, target) {
-    let arrayLength = array.length;
+  let arrayLength = array.length;
 
-    for(let i = 0; i < arrayLength; i++) {
-        if(array[i] === target) {
-            return "Data found on position " + i;
-        }
+  for(let i = 0; i < arrayLength; i++) {
+    if(array[i] === target) {
+        return i;
     }
-    return "Data not found";
+  }
+  return -1;
 }
 
 console.log(linearSearch(array, 60));
