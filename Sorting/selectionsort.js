@@ -1,19 +1,20 @@
-const numbers = [99, 44, 6, 2, 1, 5, 63, 87, 283, 4, 0];
+const numbers = [4,5,1,3,9];
 
 function selectionSort(array) {
   const arrayLength = array.length;
 
-  for (let index = 0; index < arrayLength; index++) {
-    let min = index;
-    let temp = array[index];
-    for (index2 = index + 1; index2 < arrayLength; index2++) {
-      if (array[min] > array[index2]) {
-        min = index2;
-      }
+ for(let i = 0; i < arrayLength; i++) {
+  let min = i;
+
+  for(let j = i + 1; j < arrayLength - 1; j++) {
+    if(array[j] < array[min]) {
+      min = j;
     }
-    array[index] = array[min];
-    array[min] = temp;
   }
+  let temp = array[i];
+  array[i] = array[min];
+  array[min] = temp;
+ }
 }
 
 selectionSort(numbers);

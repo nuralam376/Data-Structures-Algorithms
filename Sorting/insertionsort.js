@@ -1,20 +1,17 @@
-const numbers = [99, 44, 6, 2, 1, 5, 63, 87, 283, 4, 0];
+const numbers = [4,5,1,3,9];
 
 function insertionSort(array) {
-  const arrayLength = array.length;
-  for(let i = 0; i < arrayLength - 1; i++) {
-    let min = i;
-    for(let j = i + 1; j < arrayLength; j++) {
-      if(array[j] < array[min]) {
-        min = j;
-      }
-    }
+  let arrayLength = array.length;
+  
+  for(let i = 1; i < arrayLength; i++) {
+    let curr = array[i];
+    let prev = i - 1;
 
-    if(min !== i) {
-      let temp = array[i];
-      array[i] = array[min];
-      array[min] = temp;
+    while((array[prev] > curr) && prev >= 0) {
+      array[prev + 1] = array[prev];
+      prev--; 
     }
+    array[prev + 1] = curr;
   }
 }
 
